@@ -1,0 +1,24 @@
+{
+  "name": "zip-pass-archiver",
+  "version": "0.0.1",
+  "description": "Node.js script to create Zip archive with password for any files or folders",
+  "main": "create-pass-archive.js",
+  "scripts": {
+    "test": "node create-pass-archive.js '1234' './create-pass-archive.js'"
+  },
+  "keywords": [
+    "zip archive files",
+    "zip archive folder",
+    "archive with password",
+    "zip archive with password",
+    "archive files node",
+    "archive folder node",
+    "archive files node.js",
+    "archive folder node.js"
+  ],
+  "author": "Dmytro Shpakovskyi",
+  "license": "MIT",
+  "dependencies": {
+    "minizip-asm.js": "^1.0.10"
+  }
+}
