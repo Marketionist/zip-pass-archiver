@@ -6,6 +6,10 @@ To run the archiving script just execute the next line of code in your console /
 ```
 node ./create-pass-archive.js 'new-archive-name' 'pass1234' '../test-folder' '../test-folder2'
 ```
+OR if you use Windows execute:
+```
+node create-pass-archive.js 'new-arch-name' 'pass1234' '..\test-folder' '..\test-folder 2'
+```
 Then wait for `Done` to be displayed in the output
 
 ## Thanks

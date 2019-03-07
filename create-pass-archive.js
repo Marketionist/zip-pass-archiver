@@ -1,4 +1,5 @@
 const fs = require('fs');
+const path = require('path');
 const Minizip = require('minizip-asm.js');
 const mz = new Minizip();
 
@@ -9,9 +10,9 @@ const mz = new Minizip();
 // mz.append('test-folder/abc1.jpg', image, { password: '123' });
 // fs.writeFileSync('abc.zip', new Buffer(mz.zip()));
 
-
-
 // To run script execute: node create-pass-archive.js 'new-arch-name' 'pass1234' '../test-folder' '../test-folder 2'
+// OR
+// If you use Windows execute: node create-pass-archive.js 'new-arch-name' 'pass1234' '..\test-folder' '..\test-folder 2'
 const directories = process.argv.slice(4);
 
 console.log(`Folders to archive:`);
@@ -30,13 +31,15 @@ Promise.all(directories.map((dir, index, array) => {
         console.log('Files to archive:', files);
         return Promise.all(files.map((file) => {
             return new Promise((resolve, reject) => {
-                fs.readFile(`${dir}/${file}`, (err, data) => {
+                const pathToFile = path.join(dir, file);
+
+                fs.readFile(pathToFile, (err, data) => {
                     if (err) {
                         return reject(err);
                     } else {
                         // compressLevel default=5
                         // possible values: 0 - store only, 1 - compress faster, 9 - compress better
-                        mz.append(`${dir}/${file}`, data, { password: process.argv[3], compressLevel: 9 });
+                        mz.append(pathToFile, data, { password: process.argv[3], compressLevel: 9 });
                         resolve(process.stdout.write('.'));
                     }
                 });
@@ -53,7 +56,6 @@ Promise.all(directories.map((dir, index, array) => {
         console.log('Done');
     });
 
-    // console.log('Done');
 }).catch(function (err) {
     console.log(err);
 });
