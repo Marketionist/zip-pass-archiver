@@ -11,7 +11,7 @@ where:
 - `'new-archive-name'` is the name of new archive that will be created after running this script
 - `'../test-folder'` is the path to the first folder that you want to archive (in this example `test-folder` is located
     one level up from our current `zip-pass-archiver` folder)
-- `'../test-folder2'` is the path to the second folder that you want to archive (you can archive as much folders as you
+- `'../test-folder2'` is the path to the second folder that you want to archive (you can archive as many folders as you
     would like)
 
 OR if you use Windows execute:
